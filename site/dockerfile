@@ -1,0 +1,15 @@
+# Базовый образ для вашего Docker-контейнера
+# nginx:alpine - это официальный образ Nginx, содержащий минимальный набор инструментов.
+FROM nginx:alpine
+
+# Копирование файлов для обслуживания
+COPY about.html /usr/share/nginx/html/
+COPY contact.html /usr/share/nginx/html/
+COPY frog.html /usr/share/nginx/html/
+COPY index.html /usr/share/nginx/html/
+
+# Контейнеру дается допуск к порту 80
+EXPOSE 80
+# Запуск nginx в режиме даемона и обслуживание файлов, перечисленных выше.
+CMD ["nginx", "-g", "daemon off;"]
+# daemon off оставляет работать nginx в основном режиме, а не фоновом
